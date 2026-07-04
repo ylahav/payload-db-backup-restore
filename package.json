@@ -1,0 +1,59 @@
+{
+  "name": "payload-db-backup-restore",
+  "version": "0.1.0",
+  "description": "Admin UI for exporting and restoring selected Payload CMS collections as portable JSON. Includes a /admin/backup view and a sidebar shortcut.",
+  "license": "MIT",
+  "author": "Yair Lahav",
+  "keywords": ["payload", "payloadcms", "plugin", "backup", "restore", "export", "import", "mongodb"],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist", "README.md", "LICENSE"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./views/BackupRestoreView": {
+      "types": "./dist/views/BackupRestoreView.d.ts",
+      "import": "./dist/views/BackupRestoreView.js",
+      "default": "./dist/views/BackupRestoreView.js"
+    },
+    "./views/BackupRestoreClient": {
+      "types": "./dist/views/BackupRestoreClient.d.ts",
+      "import": "./dist/views/BackupRestoreClient.js",
+      "default": "./dist/views/BackupRestoreClient.js"
+    },
+    "./components/NavBackupLink": {
+      "types": "./dist/components/NavBackupLink.d.ts",
+      "import": "./dist/components/NavBackupLink.js",
+      "default": "./dist/components/NavBackupLink.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "bson": "^6.10.0"
+  },
+  "peerDependencies": {
+    "@payloadcms/next": "^3.0.0",
+    "@payloadcms/ui": "^3.0.0",
+    "payload": "^3.0.0",
+    "react": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@payloadcms/next": "^3.85.2",
+    "@payloadcms/ui": "^3.85.2",
+    "@types/react": "^19.0.0",
+    "payload": "^3.85.2",
+    "react": "^19.0.0",
+    "typescript": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  }
+}
