@@ -1,4 +1,4 @@
-# payload-plugin-db-backup
+# payload-db-backup-restore
 
 Admin UI for **exporting and restoring selected Payload CMS collections** as a portable JSON file. Ships an `/admin/backup` view and a sidebar shortcut. Round-trips ObjectIds and Dates faithfully via [EJSON](https://www.mongodb.com/docs/manual/reference/mongodb-extended-json/).
 
@@ -9,11 +9,11 @@ Works with any [Payload 3](https://payloadcms.com/) project on MongoDB.
 ## Install
 
 ```bash
-pnpm add payload-plugin-db-backup
+pnpm add payload-db-backup-restore
 # or
-npm  install payload-plugin-db-backup
+npm  install payload-db-backup-restore
 # or
-yarn add payload-plugin-db-backup
+yarn add payload-db-backup-restore
 ```
 
 ## Use
@@ -23,7 +23,7 @@ Add the plugin to your Payload config:
 ```ts
 // payload.config.ts
 import { buildConfig } from 'payload';
-import { backupPlugin } from 'payload-plugin-db-backup';
+import { backupPlugin } from 'payload-db-backup-restore';
 
 export default buildConfig({
   plugins: [
@@ -51,7 +51,7 @@ backupPlugin({
   showInSidebar: true,               // default
   access: (req) =>                   // default: role check
     Array.isArray(req.user?.roles) && req.user.roles.includes('admin'),
-  packageName: 'payload-plugin-db-backup',  // only override if you've forked/renamed
+  packageName: 'payload-db-backup-restore',  // only override if you've forked/renamed
 });
 ```
 
@@ -148,8 +148,8 @@ pnpm dev         # tsc --watch, useful when using pnpm link
 To develop against a local Payload project without publishing:
 
 ```bash
-cd payload-plugin-db-backup && pnpm build
-cd ../my-payload-project   && pnpm link ../payload-plugin-db-backup
+cd payload-db-backup-restore && pnpm build
+cd ../my-payload-project   && pnpm link ../payload-db-backup-restore
 ```
 
 Rebuild and Payload's importMap regen after any source change.

@@ -1,5 +1,5 @@
 {
-  "name": "payload-db-backup-restore",
+  "name": "@ylahav/payload-db-backup-restore",
   "version": "0.1.0",
   "description": "Admin UI for exporting and restoring selected Payload CMS collections as portable JSON. Includes a /admin/backup view and a sidebar shortcut.",
   "license": "MIT",
