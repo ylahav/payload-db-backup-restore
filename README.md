@@ -42,6 +42,53 @@ pnpm dev
 
 Visit `http://localhost:3000/admin/backup`. You'll see every collection listed with checkboxes and two actions: **Download backup** (writes a `.json` file) and **Restore from file** (reads one back). The sidebar gets a "Backup & restore" link at the bottom.
 
+## First-time setup: "Failed to load collections: HTTP 401"
+
+If the view loads but no collections appear and you see *"Failed to load collections: HTTP 401"*, the plugin's default access check isn't matching your Users collection shape.
+
+**Why**: the default is `req.user.roles.includes('admin')` — but Payload's out-of-the-box template doesn't add a `roles` field to `users`, so every existing user has `roles === undefined` and the check returns false.
+
+**Two ways to fix — pick one:**
+
+**A. Loosen the check for testing** — any logged-in user can back up/restore:
+
+```ts
+backupPlugin({
+  access: (req) => !!req.user,
+})
+```
+
+Reasonable when the whole `/admin` panel is already gated to trusted staff.
+
+**B. Add a `roles` field to your Users collection** — production-grade, matches the default check:
+
+```ts
+// src/collections/Users.ts
+const Users: CollectionConfig = {
+  slug: 'users',
+  auth: true,
+  fields: [
+    // your existing fields...
+    {
+      name: 'roles',
+      type: 'select',
+      hasMany: true,
+      defaultValue: ['admin'],
+      options: [
+        { label: 'Admin', value: 'admin' },
+        { label: 'User',  value: 'user' },
+      ],
+    },
+  ],
+};
+```
+
+Existing users need the role set once — via the admin UI or, if you have many, once in mongo:
+
+```
+db.users.updateMany({}, { $set: { roles: ['admin'] } })
+```
+
 ## Options
 
 ```ts
