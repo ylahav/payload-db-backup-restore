@@ -60,6 +60,6 @@ export const resolveOptions = (opts: BackupPluginOptions = {}): ResolvedBackupPl
       }),
     route,
     showInSidebar: opts.showInSidebar ?? true,
-    packageName: opts.packageName ?? 'payload-plugin-db-backup',
+    packageName: opts.packageName ?? '@ylahav/payload-db-backup-restore',
   };
 };
