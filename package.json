@@ -1,10 +1,19 @@
 {
   "name": "@yairl/payload-db-backup-restore",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Admin UI for exporting and restoring selected Payload CMS collections as portable JSON. Includes a /admin/backup view and a sidebar shortcut.",
   "license": "MIT",
   "author": "Yair Lahav",
-  "keywords": ["payload", "payloadcms", "plugin", "backup", "restore", "export", "import", "mongodb"],
+  "keywords": [
+    "payload",
+    "payloadcms",
+    "plugin",
+    "backup",
+    "restore",
+    "export",
+    "import",
+    "mongodb"
+  ],
   "homepage": "https://github.com/ylahav/payload-db-backup-restore#readme",
   "bugs": {
     "url": "https://github.com/ylahav/payload-db-backup-restore/issues"
@@ -16,7 +25,11 @@
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist", "README.md", "LICENSE"],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
