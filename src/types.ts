@@ -31,7 +31,7 @@ export type BackupPluginOptions = {
   /**
    * Package name to use in importMap paths. Only override if you've forked and
    * republished under a different name.
-   * @default 'payload-plugin-db-backup'
+   * @default '@yairl/payload-db-backup-restore'
    */
   packageName?: string;
 };

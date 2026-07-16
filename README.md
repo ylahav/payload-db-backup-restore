@@ -1,4 +1,4 @@
-# payload-db-backup-restore
+# @yairl/payload-db-backup-restore
 
 Admin UI for **exporting and restoring selected Payload CMS collections** as a portable JSON file. Ships an `/admin/backup` view and a sidebar shortcut. Round-trips ObjectIds and Dates faithfully via [EJSON](https://www.mongodb.com/docs/manual/reference/mongodb-extended-json/).
 
@@ -9,11 +9,11 @@ Works with any [Payload 3](https://payloadcms.com/) project on MongoDB.
 ## Install
 
 ```bash
-pnpm add payload-db-backup-restore
+pnpm add @yairl/payload-db-backup-restore
 # or
-npm  install payload-db-backup-restore
+npm install @yairl/payload-db-backup-restore
 # or
-yarn add payload-db-backup-restore
+yarn add @yairl/payload-db-backup-restore
 ```
 
 ## Use
@@ -23,7 +23,7 @@ Add the plugin to your Payload config:
 ```ts
 // payload.config.ts
 import { buildConfig } from 'payload';
-import { backupPlugin } from 'payload-db-backup-restore';
+import { backupPlugin } from '@yairl/payload-db-backup-restore';
 
 export default buildConfig({
   plugins: [
@@ -98,7 +98,7 @@ backupPlugin({
   showInSidebar: true,               // default
   access: (req) =>                   // default: role check
     Array.isArray(req.user?.roles) && req.user.roles.includes('admin'),
-  packageName: 'payload-db-backup-restore',  // only override if you've forked/renamed
+  packageName: '@yairl/payload-db-backup-restore',  // only override if you've forked/renamed
 });
 ```
 
