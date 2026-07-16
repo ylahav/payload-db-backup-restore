@@ -1,6 +1,6 @@
 {
   "name": "@yairl/payload-db-backup-restore",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Admin UI for exporting and restoring selected Payload CMS collections as portable JSON. Includes a /admin/backup view and a sidebar shortcut.",
   "license": "MIT",
   "author": "Yair Lahav",
