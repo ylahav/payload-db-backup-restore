@@ -99,8 +99,14 @@ export const buildBackupEndpoints = (opts: ResolvedBackupPluginOptions): Endpoin
       } catch (e: any) {
         return Response.json({ error: `bad backup file: ${e.message}` }, { status: 400 });
       }
-      if (!parsed?.data || typeof parsed.data !== 'object') {
-        return Response.json({ error: 'backup file missing `data` object' }, { status: 400 });
+      if (!parsed?.data || typeof parsed.data !== 'object' || Array.isArray(parsed.data)) {
+        return Response.json(
+          {
+            error:
+              'backup file has no `data` object — expected a backup produced by this tool, not a bare {collection: [...]} dump',
+          },
+          { status: 400 },
+        );
       }
 
       const db: any = req.payload.db;
